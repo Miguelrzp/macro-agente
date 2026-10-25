@@ -1,0 +1,7 @@
+peru:
+  fuente: bcrp
+  series:
+    PN01273PM: inflacion_12m
+    PN01271PM: inflacion_mensual
+    PD12912AM: expectativa_12m
+  meta_inflacion: [1.0, 3.0]
