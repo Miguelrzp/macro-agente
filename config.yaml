@@ -1,4 +1,5 @@
 peru:
+  nombre: Perú
   fuente: bcrp
   series:
     PN01273PM: inflacion_12m

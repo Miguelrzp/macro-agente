@@ -3,6 +3,7 @@ import yaml
 
 from analisis.comparacion import calcular_error_pronostico, resumen_ultimo_dato
 from datos.bcrp import descargar_series
+from graficas.inflacion import grafica_inflacion
 
 pd.set_option("display.width", 200)
 
@@ -16,3 +17,11 @@ peru = calcular_error_pronostico(peru)
 print(peru.tail(6).round(2))
 print()
 print(resumen_ultimo_dato(peru, peru_config["meta_inflacion"]))
+
+ruta = grafica_inflacion(
+    peru,
+    peru_config["nombre"],
+    peru_config["meta_inflacion"],
+    "salidas/inflacion_peru.png",
+)
+print(f"Gráfica guardada en: {ruta}")
