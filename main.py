@@ -1,19 +1,35 @@
 import pandas as pd
 import yaml
 
+from alertas.controles import revisar_datos
 from analisis.comparacion import calcular_error_pronostico, resumen_ultimo_dato
 from datos.bcrp import descargar_series
 from graficas.inflacion import grafica_inflacion
 
 pd.set_option("display.width", 200)
+pd.set_option("display.max_columns", None)
 
 with open("config.yaml", encoding="utf-8") as archivo:
     config = yaml.safe_load(archivo)
 
 peru_config = config["peru"]
 peru = descargar_series(peru_config["series"])
-peru = calcular_error_pronostico(peru)
 
+# Controles de calidad (sobre los datos originales)
+alertas = revisar_datos(
+    peru,
+    peru_config["meta_inflacion"],
+    **peru_config["alertas"],
+)
+print("=== ALERTAS ===")
+if alertas:
+    for nivel, mensaje in alertas:
+        print(f"[{nivel}] {mensaje}")
+else:
+    print("Sin alertas.")
+print()
+
+peru = calcular_error_pronostico(peru)
 print(peru.tail(6).round(2))
 print()
 print(resumen_ultimo_dato(peru, peru_config["meta_inflacion"]))

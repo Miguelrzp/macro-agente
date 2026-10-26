@@ -6,3 +6,6 @@ peru:
     PN01271PM: inflacion_mensual
     PD12912AM: expectativa_12m
   meta_inflacion: [1.0, 3.0]
+  alertas:
+    max_meses_rezago: 2
+    umbral_atipico: 3
