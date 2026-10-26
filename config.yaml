@@ -8,4 +8,7 @@ peru:
   meta_inflacion: [1.0, 3.0]
   alertas:
     max_meses_rezago: 2
-    umbral_atipico: 3
+    umbral_atipico: 3 
+agente:
+  modelo: claude-sonnet-5-5
+  max_tokens: 2000

@@ -1,4 +1,6 @@
 requests
 pandas
 pyyaml 
-matplotlib
+matplotlib 
+anthropic
+python-dotenv
